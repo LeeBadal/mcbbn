@@ -1,6 +1,7 @@
 # Chunk validator BBN
 
 Chunk validator is a program written in [F#](https://learn.microsoft.com/en-us/dotnet/fsharp/what-is-fsharp) that reads a file **input** that consists of chunks and returns the **index** where an invalid character is provided.
+If no error is found, the program prints **-1**
 
 
 ### What is a chunk?
@@ -26,8 +27,6 @@ Examples of invalid chunks are:
 
 ## Basic Usage
 
-Clone the repo and navigate to the **bbn** directory
-
 Edit the file **"input"** to contain the sequence of Chunks you wish to run.
 
 
@@ -38,6 +37,11 @@ docker build -t bbn .
 ```bash
 docker run --rm -t bbn
 ```
+**NOTE**: Editing **input** requires you to rebuild the docker image.
 
 ### Tests
-You can run a few tests cases by using 
+You can run a few basic tests by uncommenting **Program.fs** line 29-34
+
+### Caveats 
+* The program expects at least 1 character in the **index** file as we are not handling exceptions.
+* Editing **input** requires you to rebuild the docker image as we are not mounting any volumes.
